@@ -1,8 +1,5 @@
 // Sound.cpp
-// Runs on MSPM0
-// Sound assets in sounds/sounds.h
-// your name
-// your data 
+//runs on sound.h
 #include <stdint.h>
 #include <ti/devices/msp/msp.h>
 #include "Sound.h"
@@ -18,23 +15,21 @@ uint32_t DeCount = 0;
 
 
 
-void SysTick_IntArm(uint32_t period, uint32_t priority){
-  // write this
-  SysTick->CTRL = 0x00;   //disabling systick clock, interrupts, and general use
+void SysTick_IntA  SysTick->CTRL = 0x00;   //disabling systick clock, interrupts, and general use
   SysTick->LOAD = period-1;
   SysTick->VAL = 0;       //clears flag
   SCB->SHP[1] = (SCB->SHP[1]&(~0xC0000000))|(priority<<30); //sets priorities to msb's
   SysTick->CTRL = 0x07;   //turning systick on
 
 }
-// initialize a 11kHz SysTick, however no sound should be started
+// initialize a 11kHz SysTick
 // initialize any global variables
 // Initialize the 5 bit DAC
 uint32_t Counter;
 const uint8_t *ArrayPointer;
 
 void Sound_Init(void){
-// write this
+
   DAC5_Init();
   SysTick_IntArm(7273, 2);
 
@@ -66,7 +61,7 @@ void SysTick_Handler(void){ // called at 11 kHz
 // Output: none
 // special cases: as you wish to implement
 void Sound_Start(const uint8_t *pt, uint32_t count){
-// write 
+
   if(count == 0){
     return;
   }
@@ -81,31 +76,15 @@ void Sound_Start(const uint8_t *pt, uint32_t count){
 }
 
 void Sound_Shoot(void){
-// write this
+
   Sound_Start( error, 320);
   
 }
-void Sound_Killed(void){
-// write this
 
-}
 void Sound_Explosion(void){
-// write this
+
   Sound_Start(error_sound_short, 1650);
 }
 
-void Sound_Fastinvader1(void){
-
-}
-void Sound_Fastinvader2(void){
-
-}
-void Sound_Fastinvader3(void){
-
-}
-void Sound_Fastinvader4(void){
-
-}
-void Sound_Highpitch(void){
 
 }
