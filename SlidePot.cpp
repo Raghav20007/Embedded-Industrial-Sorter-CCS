@@ -1,6 +1,4 @@
 /* SlidePot.cpp
- * Students put your names here
- * Modified: put the date here
  * 12-bit ADC input on ADC1 channel 5, PB18
  */
 #include <ti/devices/msp/msp.h>
@@ -11,8 +9,7 @@
 
 
 void SlidePot::Init(void){
-// write code to initialize ADC1 channel 5, PB18
-// Your measurement will be connected to PB18
+// initialize ADC1 channel 5, PB18
 // 12-bit mode, 0 to 3.3V, right justified
 // software trigger, no averaging
   ADC1->ULLMEM.GPRCM.RSTCTL = 0xB1000003; // 1) reset
@@ -27,11 +24,10 @@ void SlidePot::Init(void){
   ADC1->ULLMEM.SCOMP0 = 0;                // 10) 8 sample clocks
   ADC1->ULLMEM.CPU_INT.IMASK = 0;         // 11) no interrupt
   
-  // write this
 }
 
 uint32_t SlidePot::In(void){
-  // write code to sample ADC1 channel 5, PB18 once
+  // sample ADC1 channel 5, PB18 once
   // return digital result (0 to 4095)
   ADC1->ULLMEM.CTL0 |= 0x00000001;             // 1) enable conversions
   ADC1->ULLMEM.CTL1 |= 0x00000100;             // 2) start ADC
@@ -51,7 +47,6 @@ SlidePot::SlidePot(uint32_t m, uint32_t b){
 }
 
 void SlidePot::Save(uint32_t n){
-    // write this
     flag = n;
     
 }
@@ -62,8 +57,7 @@ return (((1600*n)>>12) + 151);
 
 }
 
-// do not use this function in final lab solution
-// it is added just to show you how SLOW floating point in on a Cortex M0+
+//function understanding purpose
 float SlidePot::FloatConvert(uint32_t input){
 //  return 0.00048828125*input -0.0001812345;
 
@@ -71,7 +65,7 @@ float SlidePot::FloatConvert(uint32_t input){
 }
 
 void SlidePot::Sync(void){
-  // write this
+
   while(flag == 0){
 
   }
@@ -83,6 +77,6 @@ void SlidePot::Sync(void){
 uint32_t SlidePot::Distance(void){  // return distance value (0 to 2000), 0.001cm
 
 distance = (slope*data+offset)/4096;
-   return distance; // replace this with solution
+   return distance; 
 }
 
