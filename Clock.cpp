@@ -2,6 +2,7 @@
  * Derived from sysctl_hfxt_run_LP_MSPM0G3507_nortos_ticlang
  *              systick_periodic_timer_LP_MSPM0G3507_nortos_ticlang
  *              sysctl_mclk_syspll_LP_MSPM0G3507_nortos_ticlang
+ * Structured by Jonathan Valvano
  */
 
 
