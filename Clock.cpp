@@ -1,6 +1,4 @@
 /* Clock.cpp
- * Jonathan Valvano
- * July 9, 2023
  * Derived from sysctl_hfxt_run_LP_MSPM0G3507_nortos_ticlang
  *              systick_periodic_timer_LP_MSPM0G3507_nortos_ticlang
  *              sysctl_mclk_syspll_LP_MSPM0G3507_nortos_ticlang
@@ -273,13 +271,7 @@ void SysTick_Wait10ms(uint32_t t){
 }
 
 // initialize G8 for continuous counting
-// Program 4.2.1
-// simply read TIMG8->CTR for 16 bit time
-// divider must be 1 to 8
-// prescale must be 1 to 256
-// resolution is timerperiod*divider*prescale
-// precision is 16 bits
-// examples for 80 MHz clock
+
 // divider prescale resolution range
 //   1        1         25ns    1.6 us
 //   1       40          1us    65 ms
