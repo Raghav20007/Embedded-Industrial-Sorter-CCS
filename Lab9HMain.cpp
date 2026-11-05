@@ -1,8 +1,5 @@
 // Lab9HMain.cpp
 // Runs on MSPM0G3507
-// Lab 9 ECE319H
-// Your name
-// Last Modified: January 12, 2026
 
 #include <stdio.h>
 #include <stdint.h>
@@ -51,10 +48,7 @@ const char *Final_Text[4] = {"Final Score: ", "Puntaje final:", "Pontos Finais:"
 const char *Press_Text[4] = {"Press Play to Start", "Presione Play p/ Iniciar", "Pressione Play", "Appuyez sur Play"};
 const char *Reset_Text[4] = {"Press Reset", "Presione Rst ", "Pressione Rst", "Appuyez sur Rst"};
 
-// ****note to ECE319K students****
-// the data sheet says the ADC does not work when clock is 80 MHz
-// however, the ADC seems to work on my boards at 80 MHz
-// I suggest you try 80MHz, but if it doesn't work, switch to 40MHz
+
 void PLL_Init(void){ // set phase lock loop (PLL)
 //  Clock_Init40MHz(); // run this line for 40MHz
   Clock_Init80MHz(0);   // run this line for 80MHz
@@ -69,7 +63,7 @@ uint32_t Random(uint32_t n){
   return (Random32()>>16)%n;
 }
 
-SlidePot Sensor(1500,0); // copy calibration from Lab 7
+SlidePot Sensor(1500,0); 
 
 // games engine runs at 30Hz
 void TIMG12_IRQHandler(void){uint32_t pos,msg;
