@@ -1,5 +1,6 @@
 // Lab9HMain.cpp
 // Runs on MSPM0G3507
+//Structured by Jonathan Valvano
 
 #include <stdio.h>
 #include <stdint.h>
