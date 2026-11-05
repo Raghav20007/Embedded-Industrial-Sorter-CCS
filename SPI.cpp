@@ -1,13 +1,5 @@
 /* SPI.cpp
- * Jonathan Valvano
- * November 21, 2022
- * Derived from uart_rw_multibyte_fifo_poll_LP_MSPM0G3507_nortos_ticlang
-SPI MKII LCD
-J1.7  SPI1 SCLK  PB9_SPI1-SCK
-J2.13 SPI1 CS0   PB6_SPI1-CS0
-J2.15 SPI1 PICO  PB8_SPI1-PICO
-J2.17 LCD !RST   PB15
-J4.31 LCD RS     PA13
+ * Jonathan Valvano 
  */
 
 
@@ -89,17 +81,12 @@ void SPI_Init(void){uint32_t busfreq =  Clock_Freq();
 // bit 0=1 enable SPI
   SPI_Reset();
 }
-/* STAT register
- * 4 BUSY 0h = SPI is in idle mode. 1h = SPI is currently transmitting and/or receiving data, or transmit FIFO is not empty.
-   3 RNF Receive FIFO not full 0h = Receive FIFO is full. 1h = Receive FIFO is not full.
-   2 RFE Receive FIFO empty. 0h = Receive FIFO is not empty. 1h = Receive FIFO is empty.
-   1 TNF Transmit FIFO not full 0h = Transmit FIFO is full. 1h = Transmit FIFO is not full.
-   0 TFE Transmit FIFO empty. 0h = Transmit FIFO is not empty. 1h = Transmit FIFO is empty.*/
 
 //---------SPI_OutData------------
 // Output 8-bit data to SPI port
 // Input: data is an 8-bit data to be transferred
 // Output: none
+// My contribution
 void SPI_OutData(char data){
   while((SPI1->STAT&0x02) == 0x00){}; // spin if TxFifo full
   GPIOA->DOUTSET31_0 = 1<<13;         // RS=PA13=1 for data
