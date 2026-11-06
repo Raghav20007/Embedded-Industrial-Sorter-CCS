@@ -1,7 +1,6 @@
 /* DAC5.cpp
- * Students put your names here
- * Modified: December 26, 2024
  * 5-bit binary-weighted DAC connected to PB4-PB0
+ * Structured by Jonathan Valvano
  */
 #include <ti/devices/msp/msp.h>
 #define PB0INDEX  11 // UART0_TX  SPI1_CS2  TIMA1_C0  TIMA0_C2
@@ -17,7 +16,6 @@
 void DAC5_Init(void){
 // Assumes LaunchPad_Init has been called
 // I.e., PortB has already been reset and activated (do not reset PortB here again)
-     // write this
   IOMUX->SECCFG.PINCM[PB0INDEX] = 0x00000081;       //initializing pins 0,1,2,3,4 as outputs 
   IOMUX->SECCFG.PINCM[PB1INDEX] = 0x00000081; 
   IOMUX->SECCFG.PINCM[PB2INDEX] = 0x00000081; 
@@ -31,11 +29,9 @@ void DAC5_Init(void){
 // **************DAC5_Out*********************
 // output to DAC5
 // Input: 5-bit data, 0 to 31
-// Input=n is converted to n*3.3V/31
+// Input=n is converted to n*3.3V/31, friendly
 // Output: none
-// Note: this solution must be friendly
 void DAC5_Out(uint32_t data){
-     // write this
      GPIOB->DOUT31_0 &= 0xFFFFFFE0 ; 
      GPIOB->DOUT31_0 |= data; 
 }
