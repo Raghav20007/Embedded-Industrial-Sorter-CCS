@@ -32,8 +32,7 @@ The other Sound_* functions are empty stubs.
 - DAC5.cpp: Driver for the 5-bit binary-weighted DAC on PB4 to PB0. DAC5_Init sets those five
 pins as GPIO outputs. DAC5_Out writes a value from 0 to 31 to the pins, which the resistor network 
 turns into a voltage of about n * 3.3 V / 31. The SysTick interrupt in Sound.cpp calls this once per sample.
-
--Clock.cpp: Sets the CPU clock speed. Clock_Init80MHz uses the PLL to run the chip at 80 MHz. Also provides
+- Clock.cpp: Sets the CPU clock speed. Clock_Init80MHz uses the PLL to run the chip at 80 MHz. Also provides
 busy-wait delays (Clock_Delay, Clock_Delay1ms), SysTick wait functions, and TimerG8_Init for a free-running 
 timer used for interrupts in the main game loop (This file was primarily written by instructor Jonathan Valvano).
 
